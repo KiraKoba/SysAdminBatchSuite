@@ -368,13 +368,11 @@ goto utilitarios
 :backup_drivers
 cls
 echo Iniciando backup dos drivers...
-
 :: Inicia uma nova janela do CMD que roda o PowerShell e exporta os drivers
 start "Backup de Drivers" /wait powershell -NoExit -Command ^
 "Export-WindowsDriver -Online -Destination C:\BackupDrivers; ^
 New-Item -Path C:\BackupDrivers\_ExportConcluido.flag -ItemType File; ^
 exit"
-
 :: Aguarda até que o arquivo de controle exista (sinal que o processo terminou)
 :WAIT
 if exist C:\BackupDrivers\_ExportConcluido.flag (
@@ -386,8 +384,6 @@ if exist C:\BackupDrivers\_ExportConcluido.flag (
 )
 pause
 goto utilitarios
-
-
 
 ::restauracao_sistema
 :restauracao_sistema
@@ -424,81 +420,6 @@ cls
 echo.
 start "Gerenciar Pacotes" cmd /c "winget & pause"
 goto utilitarios
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 :: ===============================
 :: FUNÇÃO DE TÍTULO REUTILIZÁVEL
