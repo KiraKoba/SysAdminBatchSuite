@@ -20,7 +20,7 @@ set /p opcao="Escolha uma opção: "
 
 if "%opcao%"=="1" goto rede
 if "%opcao%"=="2" goto diagnostico
-if "%opcao%"=="3" goto Utilitários
+if "%opcao%"=="3" goto utilitarios
 if "%opcao%"=="0" exit
 goto menu
 :: FIM MENU PRINCIPAL
@@ -131,30 +131,36 @@ goto diagnostico
 
 :: ===============================
 :: MENU UTILITÁRIOS
-:Utilitários
+:utilitarios
 cls
 call :titulo "Utilitários"
 echo.
 echo 1 - Limpeza de Disco
-echo 2 - Desfragmentar Disco
-echo 3 - Reparo do Windows
-echo 4 - Backup dos drivers
-echo 5 - Restauração do sistema
-echo 6 - Reiniciar Spooler de Impressão
-echo 7 - Reiniciar PC
-echo 8 - Listar Programas Instalados
-echo 9 - Winget
+echo 2 - Formatar Disco
+echo 3 - Desfragmentar Disco
+echo 4 - Reparo do Windows
+echo 5 - Backup dos drivers
+echo 6 - Restauração do sistema
+echo 7 - Reiniciar Spooler de Impressão
+echo 8 - Reiniciar PC
+echo 9 - Listar Programas Instalados
+echo 10 - Winget
 echo 0 - Voltar
 echo.
 set /p opcao="Escolha uma opção: "
 
 if "%opcao%"=="1" goto limpeza_disco
-if "%opcao%"=="2" goto desfragmentar_disco
-if "%opcao%"=="3" goto reparo_windows
-if "%opcao%"=="4" goto backup_drivers
-if "%opcao%"=="5" goto restauracao_sistema
+if "%opcao%"=="2" goto formatar_disco
+if "%opcao%"=="3" goto desfragmentar_disco
+if "%opcao%"=="4" goto reparo_windows
+if "%opcao%"=="5" goto backup_drivers
+if "%opcao%"=="6" goto restauracao_sistema
+if "%opcao%"=="7" goto reiniciar_spooler
+if "%opcao%"=="8" goto reiniciar_pc
+if "%opcao%"=="9" goto listar_programas
+if "%opcao%"=="10" goto winget
 if "%opcao%"=="0" goto menu
-goto Utilitários
+goto utilitarios
 :: FIM MENU UTILITÁRIOS
 :: ===============================
 
@@ -328,6 +334,96 @@ goto diagnostico
 :: ===============================
 
 
+:: ==============================
+::Menu Utilitarios
+::limpeza_disco
+:limpeza_disco
+cls
+echo.
+start "Limpeza de Disco" cmd /c "cleanmgr & pause"
+goto utilitarios
+
+::formatar_disco
+:formatar_disco
+cls
+echo.
+start "Formatar Disco" cmd /c "DISKPART & pause"
+goto utilitarios
+
+::desfragmentar_disco
+:desfragmentar_disco
+cls
+echo.
+start "Desfragmentar Disco" cmd /c "defrag C: & pause"
+goto utilitarios
+
+::reparo_windows
+:reparo_windows
+cls
+echo.
+start "Reparo do Windows" cmd /c "DISM /Online /Cleanup-Image /RestoreHealth & pause"
+goto utilitarios
+
+::backup_driver
+:backup_drivers
+cls
+echo Iniciando backup dos drivers...
+
+:: Inicia uma nova janela do CMD que roda o PowerShell e exporta os drivers
+start "Backup de Drivers" /wait powershell -NoExit -Command ^
+"Export-WindowsDriver -Online -Destination C:\BackupDrivers; ^
+New-Item -Path C:\BackupDrivers\_ExportConcluido.flag -ItemType File; ^
+exit"
+
+:: Aguarda até que o arquivo de controle exista (sinal que o processo terminou)
+:WAIT
+if exist C:\BackupDrivers\_ExportConcluido.flag (
+    del C:\BackupDrivers\_ExportConcluido.flag >nul
+    echo Backup finalizado com sucesso!
+) else (
+    timeout /t 2 >nul
+    goto WAIT
+)
+pause
+goto utilitarios
+
+
+
+::restauracao_sistema
+:restauracao_sistema
+cls
+echo.
+start "Restauração do Sistema" cmd /c "rstrui.exe & pause"
+goto utilitarios
+
+::reiniciar_spooler
+:reiniciar_spooler
+cls
+echo.
+start "Reiniciar Spooler" cmd /c "net stop spooler & net start spooler & pause"
+goto utilitarios
+
+::reiniciar_pc
+:reiniciar_pc
+cls
+echo.
+start "Reiniciar PC" cmd /c "shutdown /r /t 0 & pause"
+goto utilitarios
+
+::listar_programas
+:listar_programas
+cls
+echo.
+start "Listar Programas Instalados" powershell -NoExit -Command "Get-ItemProperty 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*','HKLM:\Software\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*' | Select-Object DisplayName, DisplayVersion | Format-Table -AutoSize"
+
+goto utilitarios
+
+::winget
+:winget
+cls
+echo.
+start "Gerenciar Pacotes" cmd /c "winget & pause"
+goto utilitarios
 
 
 
