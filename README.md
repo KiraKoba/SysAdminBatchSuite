@@ -53,3 +53,52 @@ This resource provides concise, real-world examples and quick reference guides, 
 - __Introduction to Batch Programming - Computer Hope__:
 For a beginner-friendly overview of batch programming, including foundational concepts, command usage, and script structure, consult the Introduction to [Batch Programming by Computer Hope(https://www.computerhope.com/batch.htm)].
 This guide is especially useful for those new to scripting in Windows, offering clear explanations, examples, and tips to get started with creating and debugging `.bat` files.
+
+- __CMD Command Reference__:
+For complete documentation, visit the [Windows Command-Line Referene](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands).
+
+__Network & Diagnostics__
+- [`ipconfig`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ipconfig) - Network configuration.
+- [`ping`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping) - Connectivity test.
+- [`tracert`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/tracert) - Route tracing.
+- [`netstat`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/netstat) - Active connections.
+- [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) - DNS lookup.
+- [`systeminfo`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/systeminfo) - System summary.
+
+**System Maintenance**
+- [`sfc`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/sfc) - System file check.
+- [`chkdsk`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk?tabs=hdd%2Cevent-viewer) - Disk check.
+
+
+**Utilities**
+- [`cleanmgr`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cleanmgr) - Disk cleanup.
+- [`defrag`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/defrag) - Disk defragmentation.
+- [`diskpart`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/diskpart) - Disk partitioning.
+
+**System Control**
+- [`shutdown`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/shutdown) - System shutdown/restart.
+- [`winget`](https://learn.microsoft.com/en-us/windows/package-manager/winget/) - Package manager.
+
+## 🚀 Usage Instructions
+
+1. __Retrieve the script__
+Obtain the script by either of the following methods:
+- Save the file locally with a `.bat` extension.
+- Donwload directly from repository: Download [helper.bat](https://github.com/KiraKoba/batch-tools-support-suite/raw/refs/heads/main/helper.bat)
+> ⚠️ __Ensure that the file retains the `.bat` extension for correct execution within the Windows Command Line Interface.__
+
+2. __Launch with administrative privileges__
+To ensure full access to system-level operations, it's recommended to run the script with elevated permissions:
+- Right-click on `helper.bat`.
+- Select "Run as administrator"
+> 🔐 __Some features (e.g., Driver backup, system diagnostics and disk part) require administrative access.__
+
+3. __Navigate the interface__
+Upon execution, the script will initialize a text-based interfacem presenting a structured main manu.
+Input the number corresponding to the desired operation and press __ENTER__ to proceed.
+
+4. __Execution behabvior__
+- Select task will execute eitheir in-line or via a Command Prompt and PowerShell window.
+- Outputs are paused for review and may generate reports saved to the Desktop or predefined locations.
+> __💡The script is modular and reusable. Afeter completing an operation, users are returned to the appropriate menu__
+
