@@ -87,18 +87,34 @@ Obtain the script by either of the following methods:
 - Donwload directly from repository: Download [helper.bat](https://github.com/KiraKoba/batch-tools-support-suite/raw/refs/heads/main/helper.bat)
 > ⚠️ __Ensure that the file retains the `.bat` extension for correct execution within the Windows Command Line Interface.__
 
+\
 2. __Launch with administrative privileges__
 To ensure full access to system-level operations, it's recommended to run the script with elevated permissions:
 - Right-click on `helper.bat`.
 - Select "Run as administrator"
 > 🔐 __Some features (e.g., Driver backup, system diagnostics and disk part) require administrative access.__
 
+\
 3. __Navigate the interface__
 Upon execution, the script will initialize a text-based interfacem presenting a structured main manu.
 Input the number corresponding to the desired operation and press __ENTER__ to proceed.
 
+\
 4. __Execution behabvior__
 - Select task will execute eitheir in-line or via a Command Prompt and PowerShell window.
 - Outputs are paused for review and may generate reports saved to the Desktop or predefined locations.
 > __💡The script is modular and reusable. Afeter completing an operation, users are returned to the appropriate menu__
 
+## 📝 Acknowledgments
+
+This tool assumes a basic level of technical knowledge in the following areas:
+- __Command Line and PowerShell Fundamentals__ - Users should understand the general purpose of key commands (e.g., `ipconfig`, `sfc`, `netstat`, etc) in order to choose the most appropriate option for each scenario.
+- __Windows System Basics__ - Familiarity with the Windows OS and common maintenance tasks is recommended for effective use.
+> __⚠️This script is designed as a support tool for technical users. While it simplifies access to system diagnostics and utilities, it does not replace technical expertise.__
+
+## 📞 Contact
+For futher inquiries or support, feel free to reach out:
+- GitHub: [https://github.com/KiraKoba](https://github.com/KiraKoba)
+
+## 📜 License
+This project is licensed under the MIT License -see the [LICENSE](https://github.com/KiraKoba/batch-tools-support-suite/blob/main/LICENSE) file for details.
