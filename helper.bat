@@ -60,6 +60,7 @@ echo 3 - Liberar e Renovar IP
 echo 4 - Exibir DNS cache
 echo 5 - Limpar DNS cache
 echo 6 - Gerar relatório de rede
+echo 7 - Ativar/Desativar Adaptador de Rede
 echo 0 - Voltar
 echo.
 set /p opcao="Escolha uma opção: "
@@ -70,6 +71,7 @@ if "%opcao%"=="3" goto ipconfig_release_renew
 if "%opcao%"=="4" goto ipconfig_showdns
 if "%opcao%"=="5" goto ipconfig_cleardns
 if "%opcao%"=="6" goto ipconfig_report
+if "%opcao%"=="7" goto ipconfig_toggle_adapter
 if "%opcao%"=="0" goto rede
 goto ipconfig_menu
 :: FIM MENU IPCONFIG
@@ -210,6 +212,25 @@ cls
 echo.
 set "rel=%USERPROFILE%\Desktop\%COMPUTERNAME%.txt"
 start "Gerar relatório de rede" cmd /c "ipconfig /all > "%rel%" & echo Gerando arquivo de relatório no seu DESKTOP & echo. & pause"
+goto ipconfig_menu
+
+::ipconfig_toggle_adapter
+:ipconfig_toggle_adapter
+cls
+echo.
+netsh interface show interface
+echo.
+set "adapter_name="
+set /p "adapter_name=Qual adaptador de rede sera ativado/desativado? :"
+
+IF "%adapter_name%"=="" (
+    cls
+    echo Nenhum adaptador foi fornecido.
+    pause
+    GOTO :ipconfig_toggle_adapter
+    )
+
+start "Ativar/Desativar Adaptador de Rede" cmd /c "netsh interface set interface "%adapter_name%" admin=disable & netsh interface set interface "%adapter_name%" admin=enable & pause"
 goto ipconfig_menu
 
 :: FIM Configuração de IP
