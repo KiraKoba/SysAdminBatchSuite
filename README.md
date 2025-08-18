@@ -10,7 +10,7 @@ This repository provides a powerful collection of Windows batch scripts tailored
 ## 📑 Table of Contents
 
 - [Features](#-features)
-- [Requirements](#-requirements)
+- [Requirements](#️-requirements)
 - [Documentation](#-documentation)
 - [Usage Instructions](#-usage-instructions)
 - [Acknowledgments](#-acknowledgments)
