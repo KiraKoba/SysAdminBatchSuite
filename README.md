@@ -7,6 +7,16 @@
 
 This repository provides a powerful collection of Windows batch scripts tailored for IT support and system administrators. The tool features a user-friendly command-line interface with categorized menus, helping users perform system diagnostics, manage network settings, and execute common maintenance tasks quickly and efficiently.
 
+## 📑 Table of Contents
+
+- [Features](#-features)
+- [Requirements](#-requirements)
+- [Documentation](#-documentation)
+- [Usage Instructions](#-usage-instructions)
+- [Acknowledgments](#-acknowledgments)
+- [Contact](#-contact)
+- [License](#-license)
+
 ## ✨ Features
 
 - __Network Tools__:
